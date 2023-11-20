@@ -14,6 +14,9 @@ const useStyles = makeStyles(() => ({
   textField: {
     width: '100%',
   },
+  filterTextField: {
+    width: '500px',
+  },
   createButton: {
     width: '100%',
     backgroundColor: 'green',

@@ -59,7 +59,7 @@ const TableComponent = ({ entities, filters, setFilters, setSendQuery }) => {
         <TextField
           label="Filtrar por nombre"
           variant="outlined"
-          className={classes.textField}
+          className={classes.filterTextField}
           value={filters.searchValue}
           onChange={(e) =>
             handleFiltersChange("searchValue", e.target.value || "")
