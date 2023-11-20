@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import entityRequests from "../../requests/entity";
 import {
   Box,
   Button,
@@ -11,18 +12,33 @@ import {
   TextField,
   Paper,
 } from "@mui/material";
+import { useSnackbar } from "notistack";
 import useStyles from "./styles";
 
 const TableComponent = ({ entities, filters, setFilters, setSendQuery}) => {
   const classes = useStyles();
   const [currentEntities, setCurrentEntities] = useState([]);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     setCurrentEntities(entities);
   }, [entities]);
 
-  const deleteEntity = (id) => {
-    alert(`Delete entity with id: ${id}`);
+  const deleteEntity = async (id) => {
+    try{
+      await entityRequests.deleteEntity({
+        id,
+      });
+
+      enqueueSnackbar('Entrada eliminada', {
+        variant: 'success',
+      });
+
+      setSendQuery((prev) => !prev);
+
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: "error" });
+    }
   };
 
   const handleFiltersChange = (name, value) => {
