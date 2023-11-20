@@ -1,24 +1,19 @@
-import produce from 'immer';
-import entityFiltersActions from '../actions/entityActions';
-
 const initialState = {
-  entityFilters: {},
+  filters: {
+    searchValue: '',
+  },
 };
 
-const entityFiltersReducer = (state = initialState, action) => {
+const entityReducer = (state = initialState, action) => {
   switch (action.type) {
-    case entityFiltersActions.SET_ENTITY_FILTERS: {
-      const { entityFilters } = action.payload;
-
-      return produce(state, (draft) => {
-        draft.entityFilters = entityFilters;
-      });
-    }
-
-    default: {
+    case 'SET_FILTERS':
+      return {
+        ...state,
+        filters: action.payload,
+      };
+    default:
       return state;
-    }
   }
 };
 
-export default entityFiltersReducer;
+export default entityReducer;

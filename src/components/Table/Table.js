@@ -44,6 +44,7 @@ const TableComponent = ({ entities, filters, setFilters, setSendQuery}) => {
         <TextField
           label="Filtrar por nombre"
           variant="outlined"
+          className={classes.textField}
           value={filters.search}
           onChange={(e) => handleFiltersChange('searchValue', e.target.value || '')}
           />
@@ -56,8 +57,10 @@ const TableComponent = ({ entities, filters, setFilters, setSendQuery}) => {
           Buscar
         </Button>
       </Box>
-      <TableContainer component={Paper}>
-        <Table>
+      <TableContainer         component={Paper}
+        className={classes.scrollContainer}
+        overflowY="auto">
+        <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell align="center">Nombre</TableCell>
