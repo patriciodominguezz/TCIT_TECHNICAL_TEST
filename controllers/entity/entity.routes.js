@@ -6,7 +6,7 @@ const {
 
 
 module.exports = (app, router) => {
-  router.get('/entities', getEntities(app));
   router.post('/entity/create', postCreateEntity(app));
-  router.delete('/entity/:id', deleteEntity(app));
+  router.get('/entity/getAll', getEntities(app));
+  router.delete('/entity/delete/:id', deleteEntity(app));
 };

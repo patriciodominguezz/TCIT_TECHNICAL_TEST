@@ -1,6 +1,3 @@
-const sequelize = require("sequelize");
-
-
 const createEntity = async (app, { name, description }) => {
   const { db } = app.locals;
   const entity = await db.Entity.create({
@@ -10,7 +7,7 @@ const createEntity = async (app, { name, description }) => {
   return entity;
 };
 
-const getAllEntities = async (app) => {
+const findAllEntities = async (app) => {
   const { db } = app.locals;
   const entities = await db.Entity.findAll({
     attributes: ["id", "name", "description"],
@@ -18,7 +15,7 @@ const getAllEntities = async (app) => {
   return entities;
 };
 
-const deleteEntity = async (app, { id }) => {
+const destroyEntity = async (app, { id }) => {
   const { db } = app.locals;
   const entity = await db.Entity.destroy({
     where: {
@@ -30,6 +27,6 @@ const deleteEntity = async (app, { id }) => {
 
 module.exports = {
   createEntity,
-  getAllEntities,
-  deleteEntity,
+  findAllEntities,
+  destroyEntity,
 };

@@ -1,0 +1,7 @@
+POST http://localhost:8080/api/entity/create
+Content-Type: application/json
+
+{
+    "name": "Patricio Dominguez",
+    "description": "programador"
+}
