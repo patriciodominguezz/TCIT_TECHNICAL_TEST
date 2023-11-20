@@ -21,7 +21,6 @@ const TableComponent = ({ entities, filters, setFilters, setSendQuery }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    console.log("entities: ", entities)
     setCurrentEntities(entities);
   }, [entities]);
 

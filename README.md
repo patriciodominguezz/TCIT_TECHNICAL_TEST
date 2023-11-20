@@ -48,8 +48,8 @@ npm install
 ```
 NODE_ENV=development
 PORT=8080
-BASE_URL=http://localhost:3001
-
+FRONTEND_URL=http://localhost:3001
+REACT_APP_API_BASE_URL=http://localhost:8080
 DB_HOST=localhost
 DB_USERNAME=tcit_test
 DB_PASSWORD=tcit_test
@@ -75,3 +75,5 @@ npm run dev
 ```
 npm run start
 ```
+
+Al hacer esto se deberia abrir una pestaña en su navegador donde podra acceder a la tabla para hacer las consultas

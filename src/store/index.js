@@ -9,7 +9,6 @@ import rootReducer from '../reducers';
 const persistConfig = {
   key: 'root',
   storage,
-  // blacklist: ['account'],
 };
 
 export function configureStore(preloadedState = {}) {

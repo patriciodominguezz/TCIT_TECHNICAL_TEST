@@ -5,6 +5,7 @@ const {
 } = require('./entity.ctrl');
 
 
+// rutas
 module.exports = (app, router) => {
   router.post('/entity/create', postCreateEntity(app));
   router.get('/entity/getAll', getEntities(app));
