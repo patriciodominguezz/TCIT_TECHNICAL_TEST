@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const fs = require('fs');
 const path = require('path');
@@ -11,6 +12,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 
 const routes = require('./routes');
 
