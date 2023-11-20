@@ -19,7 +19,6 @@ const postCreateEntity = (app) => async (req, res) => {
 
 const getEntities = (app) => async (req, res) => {
   const { searchValue } = req.query;
-  console.log('searchValue', searchValue)
   try {
     const entities = await findAllEntities(app, { searchValue });
     res.json(entities);
