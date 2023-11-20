@@ -14,26 +14,33 @@ const TableContainer = () => {
   const dispatch = useDispatch();
   const reduxFilters = useSelector((state) => state.entity.filters);
   const [filters, setFilters] = useState(reduxFilters);
+  const [reduxLoaded, setReduxLoaded] = useState(false);
 
   useEffect(() => {
-    // Guardar los filtros en el estado de Redux
-    dispatch(entityActions.setFilters(reduxFilters));
-  }, [reduxFilters, dispatch]);
+    setFilters(reduxFilters);
+    setReduxLoaded(true);
+  }, [reduxFilters]);
 
   useEffect(() => {
-    const getAllEntities = async () => {
-      try {
-        const data = await entityRequests.getEntities({
-          searchValue: filters.searchValue,
-        });
-        setEntities(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    dispatch(entityActions.setFilters(filters));
+  }, [filters, dispatch]);
 
-    getAllEntities();
-  }, [sendQuery, filters.searchValue]);
+  useEffect(() => {
+    if (reduxLoaded) {
+      const getAllEntities = async () => {
+        try {
+          const data = await entityRequests.getEntities({
+            searchValue: filters.searchValue,
+          });
+          setEntities(data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      getAllEntities();
+    }
+  }, [sendQuery, reduxLoaded, filters]);
 
   return (
     <div className={classes.container}>

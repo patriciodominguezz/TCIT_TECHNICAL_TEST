@@ -15,27 +15,27 @@ import {
 import { useSnackbar } from "notistack";
 import useStyles from "./styles";
 
-const TableComponent = ({ entities, filters, setFilters, setSendQuery}) => {
+const TableComponent = ({ entities, filters, setFilters, setSendQuery }) => {
   const classes = useStyles();
   const [currentEntities, setCurrentEntities] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
+    console.log("entities: ", entities)
     setCurrentEntities(entities);
   }, [entities]);
 
   const deleteEntity = async (id) => {
-    try{
+    try {
       await entityRequests.deleteEntity({
         id,
       });
 
-      enqueueSnackbar('Entrada eliminada', {
-        variant: 'success',
+      enqueueSnackbar("Entrada eliminada", {
+        variant: "success",
       });
 
       setSendQuery((prev) => !prev);
-
     } catch (error) {
       enqueueSnackbar(error.message, { variant: "error" });
     }
@@ -47,7 +47,6 @@ const TableComponent = ({ entities, filters, setFilters, setSendQuery}) => {
       [name]: value,
     }));
   };
-    
 
   return (
     <Box
@@ -61,21 +60,17 @@ const TableComponent = ({ entities, filters, setFilters, setSendQuery}) => {
           label="Filtrar por nombre"
           variant="outlined"
           className={classes.textField}
-          value={filters.search}
-          onChange={(e) => handleFiltersChange('searchValue', e.target.value || '')}
-          />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setSendQuery((prev) => !prev)}
-          style={{ marginLeft: 10 }}
-        >
-          Buscar
-        </Button>
+          value={filters.searchValue}
+          onChange={(e) =>
+            handleFiltersChange("searchValue", e.target.value || "")
+          }
+        />
       </Box>
-      <TableContainer         component={Paper}
+      <TableContainer
+        component={Paper}
         className={classes.scrollContainer}
-        overflowY="auto">
+        overflowy="auto"
+      >
         <Table stickyHeader>
           <TableHead>
             <TableRow>
