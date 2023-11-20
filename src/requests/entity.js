@@ -1,6 +1,6 @@
-import axiosImport from "axios";
+/* eslint-disable import/no-anonymous-default-export */
 
-const axios = axiosImport.create();
+import axios from '../axios';
 
 const postCreateEntity = async ({ name, description }) => {
   try {
@@ -34,7 +34,7 @@ const deleteEntity = async ({ id }) => {
   }
 };
 
-export {
+export default {
   postCreateEntity,
   getEntities,
   deleteEntity,
