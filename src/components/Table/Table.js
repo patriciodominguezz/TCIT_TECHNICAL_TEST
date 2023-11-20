@@ -75,7 +75,7 @@ const TableComponent = ({ entities, filters, setFilters, setSendQuery }) => {
             <TableRow>
               <TableCell align="center">Nombre</TableCell>
               <TableCell align="center">Descripción</TableCell>
-              <TableCell align="center">Acciones</TableCell>
+              <TableCell align="center">Acción</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
