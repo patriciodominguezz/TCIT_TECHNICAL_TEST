@@ -1,6 +1,5 @@
-// En tu nuevo archivo components/CreateForm.js
 import React, { useState } from "react";
-import { Box, TextField, Button } from "@mui/material";
+import { TextField, Button, Card, CardContent } from "@mui/material";
 import entityRequests from "../../requests/entity";
 import { useSnackbar } from "notistack";
 import useStyles from "./styles";
@@ -17,7 +16,7 @@ const CreateForm = ({ setSendQuery }) => {
         name,
         description,
       });
-      enqueueSnackbar("Entidad creada correctamente", { variant: "success", });
+      enqueueSnackbar("Entidad creada correctamente", { variant: "success" });
 
       setSendQuery((prev) => !prev);
     } catch (error) {
@@ -29,8 +28,8 @@ const CreateForm = ({ setSendQuery }) => {
   };
 
   return (
-    <Box className={classes.createForm}>
-      <Box className={classes.column}>
+    <Card className={classes.createFormCard}>
+      <CardContent>
         <TextField
           label="Nombre"
           variant="outlined"
@@ -39,8 +38,6 @@ const CreateForm = ({ setSendQuery }) => {
           className={classes.textField}
           margin="normal"
         />
-      </Box>
-      <Box className={classes.column}>
         <TextField
           label="Descripción"
           variant="outlined"
@@ -50,8 +47,6 @@ const CreateForm = ({ setSendQuery }) => {
           className={classes.textField}
           margin="normal"
         />
-      </Box>
-      <Box className={classes.column}>
         <Button
           variant="contained"
           color="success"
@@ -60,9 +55,10 @@ const CreateForm = ({ setSendQuery }) => {
         >
           Crear
         </Button>
-      </Box>
-    </Box>
+      </CardContent>
+    </Card>
   );
 };
 
 export default CreateForm;
+

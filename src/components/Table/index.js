@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import entityActions from "../../actions/entityActions";
 import entityRequests from "../../requests/entity";
 import Table from "./Table";
+import { Grid } from "@mui/material";
 import CreateForm from "./CreateForm";
 import useStyles from "./styles";
 
@@ -44,13 +45,19 @@ const TableContainer = () => {
 
   return (
     <div className={classes.container}>
-      <Table
-        entities={entities}
-        filters={filters}
-        setFilters={setFilters}
-        setSendQuery={setSendQuery}
-      />
-      <CreateForm setSendQuery={setSendQuery} />
+      <Grid container spacing={2}>
+      <Grid item xs={12} sm={3}>
+          <CreateForm setSendQuery={setSendQuery} />
+        </Grid>
+        <Grid item xs={12} sm={9}>
+          <Table
+            entities={entities}
+            filters={filters}
+            setFilters={setFilters}
+            setSendQuery={setSendQuery}
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 };

@@ -24,6 +24,12 @@ const useStyles = makeStyles(() => ({
   scrollContainer: {
     maxHeight: "400px",
   },
+  createFormCard: {
+    height: "100%",
+  },
+  tableCard: {
+    height: "100%",
+  },
 }));
 
 export default useStyles;
